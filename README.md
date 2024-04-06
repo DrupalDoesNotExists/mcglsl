@@ -33,8 +33,12 @@ Makefile and convenient setup for building Minecraft GLSL shader resource packs.
 
 > [!NOTE]
 > Directories contain the .gitkeep files so they're added to git properly. Remove it, otherwise it
-> will be copied right to Your resource-pack zip.
+> will be copied right to your resource-pack zip.
 
-# License and contributing
+## Macro processing
+
+Macros are proccesed by GNU M4. You can override the flags via `M4_FLAGS` env variable.
+
+## License and contributing
 
 Licensed under MIT. Contribute via PR, issues and discussions.
