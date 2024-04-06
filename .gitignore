@@ -1,0 +1,3 @@
+# Exclude generated packs
+*-pack/
+*-pack.zip
