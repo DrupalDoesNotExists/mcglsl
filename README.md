@@ -31,7 +31,7 @@ Makefile and convenient setup for building Minecraft GLSL shader resource packs.
 
 `src/include` is an include dir that GNU M4 uses when building. Put Your shared logic here. If there is a logic that is used in both core and post shaders You should create a file under `src/include` and an additional file under `minecraft/shaders/include` with ```include(`your_file.glsl')``` line.
 
-> [!NOTE]
+> [!WARNING]
 > Directories contain the .gitkeep files so they're added to git properly. Remove it, otherwise it
 > will be copied right to your resource-pack zip.
 
