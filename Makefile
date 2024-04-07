@@ -17,7 +17,10 @@ ZIP_FLAGS := -r
 SOURCES = $(shell find $(ROOT_DIR) -type f -name "*.glsl" -o -name "*.fsh" -o -name "*.frag" -o -name "*.vsh" -o -name "*.vert")
 OBJECTS = $(patsubst $(ROOT_DIR)/%,$(PACK_NAME)/%,$(SOURCES))
 
-pack: clean pack-dir $(OBJECTS) zip
+MINECRAFT_DIR ?= ~/.minecraft
+RESOURCEPACKS_DIR := $(MINECRAFT_DIR)/resourcepacks
+
+pack: clean pack-dir $(OBJECTS) clone-assets zip
 
 pack-dir:
 	mkdir $(PACK_NAME)
@@ -30,5 +33,11 @@ $(PACK_NAME)/%: $(ROOT_DIR)/%
 	-mkdir -p $(@D)
 	$(M4) $(M4_FLAGS) $(M4_FILES) $< > $@
 
+clone-assets:
+	cp -rn $(ROOT_DIR)/* $(PACK_NAME)
+
 zip:
 	(cd $(PACK_NAME); $(ZIP) $(ZIP_FLAGS) ../$(PACK_NAME_ZIP) *)
+
+install: pack
+	cp $(PACK_NAME_ZIP) $(RESOURCEPACKS_DIR)
