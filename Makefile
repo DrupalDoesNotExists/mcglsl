@@ -2,11 +2,11 @@ SRC_DIR := src
 ROOT_DIR := $(SRC_DIR)/root
 INCLUDE_DIR := $(SRC_DIR)/include
 
-GENERATED_DIR := generated/
+GENERATED_DIR := generated
 
 PACK_META_NAME := "$(shell cat pack-name)"
-PACK_NAME := $(GENERATED_DIR)/$(PACK_META_NAME)
-PACK_NAME_ZIP := $(PACK_NAME).zip
+PACK_NAME := $(GENERATED_DIR)/$(shell echo $(PACK_META_NAME) | sed -e 's/ /-/g')
+PACK_NAME_ZIP := $(GENERATED_DIR)/$(PACK_META_NAME).zip
 
 M4 := m4
 M4_DIR := m4
@@ -17,7 +17,7 @@ ZIP := zip
 ZIP_FLAGS := -r
 
 SOURCES = $(shell find $(ROOT_DIR) -type f -name "*.glsl" -o -name "*.fsh" -o -name "*.frag" -o -name "*.vsh" -o -name "*.vert")
-OBJECTS = $(patsubst $(ROOT_DIR)/%,"$(PACK_NAME)/%",$(SOURCES))
+OBJECTS = $(patsubst $(ROOT_DIR)/%,$(PACK_NAME)/%,$(SOURCES))
 
 MINECRAFT_DIR ?= ~/.minecraft
 RESOURCEPACKS_DIR := $(MINECRAFT_DIR)/resourcepacks
@@ -26,6 +26,7 @@ RESOURCEPACKS_OUT := $(RESOURCEPACKS_DIR)/$(PACK_META_NAME).zip
 pack: clean pack-dir $(OBJECTS) clone-assets zip
 
 pack-dir:
+	@echo $(PACK_NAME)
 	mkdir -p $(PACK_NAME)
 
 clean:
