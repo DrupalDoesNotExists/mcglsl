@@ -12,6 +12,7 @@ Makefile and convenient setup for building Minecraft GLSL shader resource packs.
 │   └── vendor.m4
 ├── Makefile
 ├── README.md
+├── pack-name
 └── src
     ├── include
     └── root
@@ -34,6 +35,9 @@ Makefile and convenient setup for building Minecraft GLSL shader resource packs.
 > [!WARNING]
 > Directories contain the .gitkeep files so they're added to git properly. Remove it, otherwise it
 > will be copied right to your resource-pack zip.
+
+> [!NOTE]
+> Change the contents of `pack-name` to match the name of your resource pack!
 
 ## Macro processing
 

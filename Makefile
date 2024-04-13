@@ -2,7 +2,7 @@ SRC_DIR := src
 ROOT_DIR := $(SRC_DIR)/root
 INCLUDE_DIR := $(SRC_DIR)/include
 
-PACK_NAME ?= mcglsl-template
+PACK_NAME ?= $(shell cat pack-name)
 PACK_NAME := $(PACK_NAME)-pack
 PACK_NAME_ZIP := $(PACK_NAME).zip
 
